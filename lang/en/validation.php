@@ -248,5 +248,10 @@ return [
         'username' => 'ユーザー名',
         'year' => '年',
     ],
+    'attributes' => [
+        'title'=>'件名',
+        'body'=>'本文',
+        'image'=>'画像',
+    ],
 
 ];
