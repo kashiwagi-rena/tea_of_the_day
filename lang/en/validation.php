@@ -249,8 +249,8 @@ return [
         'year' => '年',
     ],
     'attributes' => [
-        'title'=>'件名',
-        'body'=>'本文',
+        'title'=>'紅茶名',
+        'body'=>'おすすめポイント',
         'image'=>'画像',
     ],
 
