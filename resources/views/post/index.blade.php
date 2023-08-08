@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl  text-red-800 leading-tight">
             みんなのおすすめ紅茶
         </h2>
 
@@ -15,12 +15,12 @@
                 <div class="mt-4">
                     <div class="bg-white w-full  rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
                         <div class="mt-4">
-                            <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">
+                            <h1 class="text-lg text-red-800 font-semibold hover:underline cursor-pointer">
                             <a href="{{route('post.show', $post)}}">{{ $post->title }}</a>
                             </h1>
                             <hr class="w-full">
-                            <p class="mt-4 text-gray-600 py-4">{{ $post->body }}</p>
-                            <div class="text-sm font-semibold flex flex-row-reverse">
+                            <p class="mt-4 text-red-600 py-4">{{ $post->body }}</p>
+                            <div class="text-sm font-semibold flex flex-row-reverse text-red-600">
                                 <p>{{ $post->user->name }} • {{ $post->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
