@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="font-kaisei max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -69,7 +69,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+        <div class="pt-2 pb-3 space-y-1 font-kaisei ">
             <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                 HOME
             </x-responsive-nav-link>
@@ -80,13 +80,13 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="font-kaisei  pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
                 <div class="font-medium text-base text-red-800">@if(Auth::check()) {{ Auth::user()->name }} @endif</div>
                 <div class="font-medium text-sm text-red-500">@if(Auth::check()) {{ Auth::user()->email }} @endif</div>
             </div>
 
-            <div class="mt-3 space-y-1">
+            <div class="font-kaisei  mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>

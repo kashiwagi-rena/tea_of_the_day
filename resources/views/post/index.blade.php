@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl  text-red-800 leading-tight">
+        <h2 class="font-kaisei text-xl  text-red-800 leading-tight">
             みんなのおすすめ紅茶
         </h2>
 
         <form class="m-4" method="GET" action="{{ route('post.index') }}">
-            <input type="search" placeholder="紅茶名を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+            <input class="font-kaisei" type="search" placeholder="紅茶名を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
             <x-primary-button class="bg-teal-700" type="submit">検索</x-primary-button>
             <div>
                 <button>
@@ -26,12 +26,12 @@
                 <div class="mt-4">
                     <div class="bg-white w-full  rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
                         <div class="mt-4">
-                            <h1 class="text-lg text-red-800 font-semibold hover:underline cursor-pointer">
+                            <h1 class="text-lg text-red-800 font-kaisei hover:underline cursor-pointer">
                             <a href="{{route('post.show', $post)}}">{{ $post->title }}</a>
                             </h1>
                             <hr class="w-full">
-                            <p class="mt-4 text-red-600 py-4">{{ $post->body }}</p>
-                            <div class="text-sm font-semibold flex flex-row-reverse text-red-600">
+                            <p class="mt-4 text-red-600 py-4 font-kaisei">{{ $post->body }}</p>
+                            <div class="text-sm font-kaisei flex flex-row-reverse text-red-600">
                                 <p>{{ $post->user->name }} • {{ $post->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
