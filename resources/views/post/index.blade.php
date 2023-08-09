@@ -4,6 +4,17 @@
             みんなのおすすめ紅茶
         </h2>
 
+        <form class="m-4" method="GET" action="{{ route('post.index') }}">
+            <input type="search" placeholder="紅茶名を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+            <x-primary-button class="bg-teal-700" type="submit">検索</x-primary-button>
+            <div>
+                <button>
+                    <a href="{{ route('post.index') }}" class="text-white">
+                        クリア
+                    </a>
+                </button>
+            </div>
+        </form>
         <x-message :message="session('message')" />
 
     </x-slot>

@@ -7,16 +7,43 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        // 認証が必要なアクションを指定
+        $this->middleware('auth')->only(['new', 'create', 'store', 'edit', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts=Post::orderBy('created_at','desc')->get();
-        $user=auth()->user();
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        $user = auth()->user();
+    
+        // 検索フォームで入力された値を取得する
+        $search = $request->input('search');
+        // クエリビルダ
+        $query = Post::query();
+        // もし検索フォームにキーワードが入力されたら
+        if ($search) {
+            // 全角スペースを半角に変換
+            $spaceConversion = mb_convert_kana($search, 's');
+    
+            // 単語を半角スペースで区切り、配列にする（例："山田 翔" → ["山田", "翔"]）
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+    
+            // 単語をループで回し、ユーザーネームと部分一致するものがあれば、$queryとして保持される
+            foreach ($wordArraySearched as $value) {
+                $query->where('title', 'like', '%' . $value . '%');
+            }
+    
+            // 上記で取得した$queryをページネートにし、変数$postsに代入（変数名を$postから$postsに修正）
+            $posts = $query->paginate(20);
+        }
+    
         return view('post.index', compact('posts', 'user'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
